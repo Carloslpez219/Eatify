@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UVG/CuartoSemestre/PlataformasMoviles/Eatify/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
+        <entry key="..\:/UVG/CuartoSemestre/PlataformasMoviles/Eatify/app/src/main/res/layout/buscar.xml" value="0.20652173913043478" />
+        <entry key="..\:/UVG/CuartoSemestre/PlataformasMoviles/Eatify/app/src/main/res/layout/layout.xml" value="0.1875" />
         <entry key="..\:/UVG/CuartoSemestre/PlataformasMoviles/Eatify/app/src/main/res/layout/login.xml" value="0.2" />
+        <entry key="..\:/UVG/CuartoSemestre/PlataformasMoviles/Eatify/app/src/main/res/layout/perfil.xml" value="0.20652173913043478" />
       </map>
     </option>
   </component>
