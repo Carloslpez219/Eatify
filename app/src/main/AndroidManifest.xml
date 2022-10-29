@@ -23,7 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name="gt.uvg.eatify.MainActivity"
-            android:label="Preferences">
+            android:label="Principal">
+        </activity>
+        <activity android:name="gt.uvg.eatify.Detalle"
+            android:label="Detalle receta">
         </activity>
     </application>
 

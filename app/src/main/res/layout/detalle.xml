@@ -6,34 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backGround">
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="416dp"
-        android:layout_height="56dp"
-        android:background="@color/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:navigationIcon="?attr/homeAsUpIndicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="54dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Atrás"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.cardview.widget.CardView
         android:layout_width="418dp"
         android:layout_height="572dp"

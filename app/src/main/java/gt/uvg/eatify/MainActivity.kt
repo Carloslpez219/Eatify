@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        card = findViewById<View>(R.id.cardView) as CardView?
+        card = findViewById<View>(R.id.cardView2) as CardView?
         card?.setOnClickListener(
             object : View.OnClickListener {
                 override fun onClick(v: View?) {
