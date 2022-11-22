@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gt.uvg.eatify">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,7 +16,7 @@
         android:theme="@style/Theme.Eatify"
         tools:targetApi="31">
         <activity
-            android:name=".Login"
+            android:name="gt.uvg.eatify.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="gt.uvg.eatify.MainActivity"
+
+        <activity android:name="gt.uvg.eatify.Login"
             android:label="Principal">
         </activity>
+
         <activity android:name="gt.uvg.eatify.Detalle"
             android:label="Detalle receta">
         </activity>
+
     </application>
 
 </manifest>
