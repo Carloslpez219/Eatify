@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 object RecipeAPI {
 
-    private val BASE_URL = "https://pokeapi.co/api/v2/"
+    private val BASE_URL = "https://api.spoonacular.com/"
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
@@ -26,6 +26,6 @@ object RecipeAPI {
 }
 
 interface RecipeService {
-    @GET("pokemon?limit=100")
-    fun getFirst100Pokemon(): Call<RecipeResponse>
+    @GET("recipes/random?apiKey=88ee5f7c9c874c8ba76eabced84e38ec&number=15")
+    fun getFirst10Recipes(): Call<RecipeResponse>
 }
