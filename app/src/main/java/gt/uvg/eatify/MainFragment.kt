@@ -34,5 +34,38 @@ class MainFragment : Fragment() {
         val view = binding.root
         return view
     }
-    
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val client = RecipeAPI.retrofitService.getFirst10Recipes()
+        client.enqueue(object:retrofit2.Callback<RecipeResponse>{
+            override fun onResponse(
+                call: Call<RecipeResponse>,
+                response: Response<RecipeResponse>
+            ) {
+                if(response.isSuccessful){
+                    val recipes = response.body()?.recipes
+                    recyclerView = binding.recyclerView
+                    recyclerView.layoutManager = LinearLayoutManager(context)
+                    recyclerView.adapter = RecipeListAdapter(recipes!!)
+                    recyclerView.setHasFixedSize(true)
+
+                    binding.progressBar.visibility = View.GONE
+                    binding.recyclerView.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "FETCHED: " + recipes.size, Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<RecipeResponse>, t: Throwable) {
+                Toast.makeText(requireContext(), "ERROR", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
