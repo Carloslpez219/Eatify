@@ -6,9 +6,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.cardview.widget.CardView
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import gt.uvg.eatify.R
+import gt.uvg.eatify.databinding.ActivityMainBinding
+import androidx.navigation.ui.setupActionBarWithNavController
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     var card: CardView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
