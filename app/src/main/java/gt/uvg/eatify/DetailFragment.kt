@@ -1,18 +1,20 @@
 package gt.uvg.eatify
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import gt.uvg.eatify.databinding.FragmentDetailBinding
 import gt.uvg.eatify.model.Recipe
-import gt.uvg.eatify.model.RecipeResponse
 import gt.uvg.eatify.repository.RecipeAPI
 import retrofit2.Call
 import retrofit2.Response
+
 
 class DetailFragment : Fragment() {
 
@@ -69,6 +71,12 @@ class DetailFragment : Fragment() {
                     binding.readyInMinutes.text = readyInMinutes.toString()
                     binding.instructions.text = instructions?.replace("\n", " ")
                     binding.sourceUrl.text = sourceUrl
+
+                    binding.sourceUrl.setOnClickListener{
+                        val browserIntent =
+                            Intent(Intent.ACTION_VIEW, Uri.parse(sourceUrl))
+                            startActivity(browserIntent)
+                    }
 
                 }
             }
