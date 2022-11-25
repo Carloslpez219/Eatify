@@ -1,59 +1,94 @@
 package gt.uvg.eatify
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
+import gt.uvg.eatify.databinding.FragmentDetailBinding
+import gt.uvg.eatify.model.Recipe
+import gt.uvg.eatify.repository.RecipeAPI
+import retrofit2.Call
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    companion object{
+        val foodId = "foodId"
+    }
+
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
+    private var recipeId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        arguments?.let{recipeId = it.getInt(foodId)}
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+    ): View {
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Toast.makeText(requireContext(), "ID: $recipeId", Toast.LENGTH_LONG).show()
+        val client = RecipeAPI.retrofitService.getRecipeInformation(recipeId, "88ee5f7c9c874c8ba76eabced84e38ec")
+        client.enqueue(object : retrofit2.Callback<Recipe> {
+            override fun onResponse(
+                call: Call<Recipe>,
+                response: Response<Recipe>
+            ){
+                if (response.isSuccessful){
+
+                    val title = response.body()?.title
+                    val image = response.body()?.image
+                    val readyInMinutes = response.body()?.readyInMinutes
+                    val servings = response.body()?.servings
+                    val sourceUrl = response.body()?.sourceUrl
+                    val summary = response.body()?.summary
+                    val instructions = response.body()?.instructions
+                    val regex = "<(\\S*?)[^>]*>.?<\\1>|<.*?>"
+
+                    Picasso.get().load(image)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.placeholder)
+                                .into(binding.img)
+
+                    binding.title.text = title
+                    binding.summary.text = summary?.replace(regex.toRegex(), " ")
+                    binding.servings.text = servings.toString()
+                    binding.readyInMinutes.text = readyInMinutes.toString()
+                    binding.instructions.text = instructions?.replace("\n", " ")
+                    binding.sourceUrl.text = sourceUrl
+
+                    binding.sourceUrl.setOnClickListener{
+                        val browserIntent =
+                            Intent(Intent.ACTION_VIEW, Uri.parse(sourceUrl))
+                            startActivity(browserIntent)
+                    }
+
                 }
             }
+
+            override fun onFailure(call: Call<Recipe>, t: Throwable) {
+                Toast.makeText(requireContext(), "ERROR", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
