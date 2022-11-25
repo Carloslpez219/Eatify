@@ -26,15 +26,19 @@
 
         <TextView
             android:id="@+id/recipeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="173dp"
+            android:layout_height="68dp"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginStart="20dp"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.103"
             card_view:layout_constraintStart_toEndOf="@+id/recipePhoto"
             card_view:layout_constraintTop_toTopOf="parent"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            card_view:layout_constraintVertical_bias="0.515"
             tools:text="Pasta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

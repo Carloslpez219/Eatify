@@ -42,8 +42,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(requireContext(), "ID: $recipeId", Toast.LENGTH_LONG).show()
-        val client = RecipeAPI.retrofitService.getRecipeInformation(recipeId, "88ee5f7c9c874c8ba76eabced84e38ec")
+        val client = RecipeAPI.retrofitService.getRecipeInformation(recipeId, "e1d4afb251364be4a9ce7627b11d42e0")
         client.enqueue(object : retrofit2.Callback<Recipe> {
             override fun onResponse(
                 call: Call<Recipe>,
@@ -69,7 +68,7 @@ class DetailFragment : Fragment() {
                     binding.summary.text = summary?.replace(regex.toRegex(), " ")
                     binding.servings.text = servings.toString()
                     binding.readyInMinutes.text = readyInMinutes.toString()
-                    binding.instructions.text = instructions?.replace("\n", " ")
+                    binding.instructions.text = instructions?.replace("\n", " ")?.replace(regex.toRegex(), " ")
                     binding.sourceUrl.text = sourceUrl
 
                     binding.sourceUrl.setOnClickListener{
@@ -82,7 +81,6 @@ class DetailFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<Recipe>, t: Throwable) {
-                Toast.makeText(requireContext(), "ERROR", Toast.LENGTH_LONG).show()
             }
         })
     }

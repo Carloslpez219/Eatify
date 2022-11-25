@@ -156,7 +156,7 @@
                         android:id="@+id/sourceUrl"
                         android:layout_width="match_parent"
                         android:layout_height="32dp"
-                        android:textColor="#555" />
+                        android:textColor="#2196F3" />
                 </LinearLayout>
 
             </LinearLayout>

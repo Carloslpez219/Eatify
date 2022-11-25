@@ -29,7 +29,7 @@ object RecipeAPI {
 }
 
 interface RecipeService {
-    @GET("recipes/random?apiKey=88ee5f7c9c874c8ba76eabced84e38ec&number=15")
+    @GET("recipes/random?apiKey=e1d4afb251364be4a9ce7627b11d42e0&number=15")
     fun getFirst10Recipes(): Call<RecipeResponse>
 
     @GET("recipes/{id}/information")
