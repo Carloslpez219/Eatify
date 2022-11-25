@@ -56,6 +56,7 @@ class DetailFragment : Fragment() {
                     val sourceUrl = response.body()?.sourceUrl
                     val summary = response.body()?.summary
                     val instructions = response.body()?.instructions
+                    val regex = "<(\\S*?)[^>]*>.?<\\1>|<.*?>"
 
                     Picasso.get().load(image)
                                 .placeholder(R.drawable.placeholder)
@@ -63,10 +64,10 @@ class DetailFragment : Fragment() {
                                 .into(binding.img)
 
                     binding.title.text = title
-                    binding.summary.text = summary
+                    binding.summary.text = summary?.replace(regex.toRegex(), " ")
                     binding.servings.text = servings.toString()
                     binding.readyInMinutes.text = readyInMinutes.toString()
-                    binding.instructions.text = instructions
+                    binding.instructions.text = instructions?.replace("\n", " ")
                     binding.sourceUrl.text = sourceUrl
 
                 }
