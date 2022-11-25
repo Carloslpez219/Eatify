@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import gt.uvg.eatify.databinding.FragmentMainBinding
 import gt.uvg.eatify.model.RecipeResponse
 import gt.uvg.eatify.repository.RecipeAPI
@@ -17,6 +18,7 @@ import retrofit2.Response
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private lateinit var firebaseAuth: FirebaseAuth
 
     private lateinit var  recyclerView: RecyclerView
 

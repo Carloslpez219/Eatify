@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import gt.uvg.eatify.R
 import gt.uvg.eatify.databinding.ActivityMainBinding
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

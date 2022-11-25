@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "89933645701",
+    "project_id": "eatify-746b9",
+    "storage_bucket": "eatify-746b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89933645701:android:02c913f16b1ab0e75766ec",
+        "android_client_info": {
+          "package_name": "gt.uvg.eatify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89933645701-ip0kgumvmdivinog5au0n88ids9u9s0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gt.uvg.eatify",
+            "certificate_hash": "d25c95e4ff3ba376b1fea5d0587ba911a033a42b"
+          }
+        },
+        {
+          "client_id": "89933645701-2sqb226nqik6adopaf4iol0bvcv07fq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ3916P4Ypxr3yQUTLOECspZSLkv91P4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89933645701-2sqb226nqik6adopaf4iol0bvcv07fq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
